@@ -1,4 +1,4 @@
-package se.yrgo.domain;
-
-public class Musician {
-}
+//package se.yrgo.domain;
+//
+//public class Musician {
+//}

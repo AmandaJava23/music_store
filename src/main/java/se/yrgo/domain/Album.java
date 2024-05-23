@@ -13,7 +13,7 @@ public class Album {
     private long id;
     private String title;
     private String genre;
-    private Band band;
+//    private Band band;
 
     public Album() {
     }
@@ -22,7 +22,36 @@ public class Album {
         this.id = id;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", genre='" + genre + '\'' +
+                '}';
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }

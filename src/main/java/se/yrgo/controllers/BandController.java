@@ -1,4 +1,4 @@
-package se.yrgo.controllers;
-
-public class BandController {
-}
+//package se.yrgo.controllers;
+//
+//public class BandController {
+//}
