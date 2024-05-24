@@ -8,6 +8,7 @@ import se.yrgo.data.AlbumRepository;
 import se.yrgo.domain.Album;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class AlbumRestController {
@@ -25,5 +26,26 @@ public class AlbumRestController {
         return new ResponseEntity<Album>(album, HttpStatus.CREATED);
     }
 
+    @RequestMapping(value = "/albums/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Album> getAlbumById(@PathVariable Long id) {
+        Optional<Album> album = data.findById(id);
+        if (album.isPresent()) {
+            return new ResponseEntity<>(album.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    @RequestMapping(value = "/albums/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteAlbum(@PathVariable Long id) {
+        Optional<Album> album = data.findById(id);
+        if (album.isPresent()) {
+            data.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }
