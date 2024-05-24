@@ -13,8 +13,6 @@ public class Album {
     private long id;
     private String title;
     private String genre;
-//    private Band band;
-
     public Album() {
     }
 
