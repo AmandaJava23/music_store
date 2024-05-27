@@ -47,5 +47,10 @@ public class AlbumController {
         Album album = data.findAlbumByTitle(title);
         return new ModelAndView("albumInfo", "album", album);
     }
+
+    @RequestMapping(value="/welcome.html", method=RequestMethod.GET)
+    public String welcome() {
+        return "welcome"; // Detta returnerar welcome.jsp
+    }
 }
 

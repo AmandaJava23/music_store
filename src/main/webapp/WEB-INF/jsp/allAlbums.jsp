@@ -3,15 +3,39 @@
 
 <html>
 <head>
-   <title>Albums page</title>
+   <title>Mina album</title>
+   <script>
+      function deleteAlbum(id) {
+         if (confirm("Är du säker på att du vill ta bort detta album?")) {
+            fetch(`/website/albums/${id}`, {
+               method: 'DELETE'
+            })
+                    .then(response => {
+                       if (response.ok) {
+                          alert("Album borttaget!");
+                          location.reload();
+                       } else {
+                          alert("Misslyckades att ta bort album.");
+                       }
+                    })
+                    .catch(error => {
+                       console.error("Det uppstod ett fel vid borttagning av albumet:", error);
+                    });
+         }
+      }
+   </script>
 </head>
 <body>
 <h1>Albums page</h1>
 
 <ul>
    <c:forEach items="${albums}" var="album">
-      <li>${album}</li>
+      <li>
+            ${album.title}
+         <button onclick="deleteAlbum(${album.id})">Ta bort</button>
+      </li>
    </c:forEach>
 </ul>
 </body>
 </html>
+

@@ -13,6 +13,7 @@ public class Album {
     private long id;
     private String title;
     private String genre;
+    private String artist;
     public Album() {
     }
 
@@ -26,11 +27,7 @@ public class Album {
 
     @Override
     public String toString() {
-        return "Album{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                '}';
+        return "Album: " + title + "\nArtist: " + artist + "\nGenre: " + genre;
     }
 
     public String getTitle() {
@@ -47,5 +44,13 @@ public class Album {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 }
