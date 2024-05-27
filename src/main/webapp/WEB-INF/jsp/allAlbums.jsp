@@ -86,6 +86,21 @@
       .album-item:hover {
          background-color: #f0f0f0; /* Ljusare bakgrund vid hover */
       }
+      .album-item button {
+         background-color: #b22222; /* Mörk röd bakgrund för knappen */
+         color: #fff; /* Vit text */
+         border: none;
+         padding: 3px 6px;
+         border-radius: 5px;
+         font-size: 0.9em;
+         cursor: pointer;
+         margin-left: 15px;
+         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Lätt skugga */
+      }
+
+      .album-item button:hover {
+         background-color: #c03; /* Ljusare röd bakgrund vid hover */
+      }
 
    </style>
 </head>
@@ -105,11 +120,34 @@
    <ul class="album-list">
       <c:forEach items="${albums}" var="album">
          <li class="album-item">
-               ${album}
+               ${album.title}
+            <button onclick="deleteAlbum(${album.id})">X</button>
          </li>
       </c:forEach>
    </ul>
 </div>
+
+<script>
+   function deleteAlbum(id) {
+      if (confirm("Är du säker på att du vill ta bort detta album?")) {
+         fetch(`/albums/\${id}`, {
+            method: 'DELETE'
+         })
+                 .then(response => {
+                    if (response.ok) {
+                       alert("Album borttaget!");
+                       location.reload();
+                    } else {
+                       alert("Misslyckades att ta bort album.");
+                    }
+                 })
+                 .catch(error => {
+                    console.error("Det uppstod ett fel vid borttagning av albumet:", error);
+                 });
+      }
+   }
+</script>
+
 </body>
 </html>
 
