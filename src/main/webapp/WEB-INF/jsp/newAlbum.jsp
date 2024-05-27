@@ -28,5 +28,7 @@
         <input type="submit" />
     </div>
 </form:form>
+
+<a href="<spring:url value='/website/albums/welcome.html'/>">Home</a>
 </body>
 </html>

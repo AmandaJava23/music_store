@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
 <head>
@@ -35,11 +36,9 @@
     <h1>Välkommen till vår musiksida</h1>
     <nav>
         <ul>
-            <li><a href="<spring:url value='/home'/>">Home</a></li>
+            <li><a href="<spring:url value='/website/albums/welcome.html'/>">Home</a></li>
             <li><a href="<spring:url value='/website/albums/list.html'/>">Albums</a></li>
             <li><a href="<spring:url value='/website/albums/newAlbum.html'/>">New Album</a></li>
-            <li><a href="<spring:url value='/contact'/>">Contact</a></li>
-            <li><a href="<spring:url value='/website/albums/welcome.html'/>">Welcome</a></li>
         </ul>
     </nav>
     <img src="<spring:url value='/assets/vinyl.gif'/>" alt="Vinyl GIF">

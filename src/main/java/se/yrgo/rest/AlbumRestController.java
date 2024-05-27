@@ -36,8 +36,7 @@ public class AlbumRestController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    @RequestMapping(value = "/albums/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/albums/{id}")
     public ResponseEntity<Void> deleteAlbum(@PathVariable Long id) {
         Optional<Album> album = data.findById(id);
         if (album.isPresent()) {
