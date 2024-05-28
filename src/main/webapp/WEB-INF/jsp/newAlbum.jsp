@@ -99,16 +99,16 @@
         </div>
 
         <div class="form-group">
+            <form:label path="artist">Artist</form:label>
+            <form:input path="artist" class="form-control" />
+            <form:errors path="artist" class="form-error"/>
+        </div>
+        <div class="form-group">
             <form:label path="genre">Genre</form:label>
             <form:input path="genre" class="form-control" />
             <form:errors path="genre" class="form-error"/>
         </div>
 
-        <div class="form-group">
-            <form:label path="artist">Artist</form:label>
-            <form:input path="artist" class="form-control" />
-            <form:errors path="artist" class="form-error"/>
-        </div>
 
         <div class="form-group">
             <input type="submit" class="btn-submit" />
