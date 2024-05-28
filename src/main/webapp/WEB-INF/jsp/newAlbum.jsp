@@ -85,35 +85,63 @@
         }
 
     </style>
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Förhindra standard formulärsändning
+
+            const form = document.querySelector('.album-form');
+            const formData = new FormData(form);
+            const jsonData = {};
+
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            fetch('/albums', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Album sparat!');
+                        window.location.href = '/website/albums/list.html'; // Ompekning efter framgång
+                    } else {
+                        alert('Misslyckades att spara album.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Det uppstod ett fel:', error);
+                    alert('Det uppstod ett fel vid sparandet av album.');
+                });
+        }
+    </script>
 </head>
 <body>
 <div class="container">
     <h1>New Album Registration</h1>
 
-    <form:form modelAttribute="form" class="album-form">
-        <form:errors path="" element="div" class="form-error" />
+    <form class="album-form" onsubmit="submitForm(event)">
         <div class="form-group">
-            <form:label path="title">Title</form:label>
-            <form:input path="title" class="form-control" />
-            <form:errors path="title" class="form-error"/>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" class="form-control" />
         </div>
 
         <div class="form-group">
-            <form:label path="artist">Artist</form:label>
-            <form:input path="artist" class="form-control" />
-            <form:errors path="artist" class="form-error"/>
+            <label for="artist">Artist</label>
+            <input type="text" id="artist" name="artist" class="form-control" />
         </div>
         <div class="form-group">
-            <form:label path="genre">Genre</form:label>
-            <form:input path="genre" class="form-control" />
-            <form:errors path="genre" class="form-error"/>
+            <label for="genre">Genre</label>
+            <input type="text" id="genre" name="genre" class="form-control" />
         </div>
-
 
         <div class="form-group">
-            <input type="submit" class="btn-submit" />
+            <input type="submit" class="btn-submit" value="Submit" />
         </div>
-    </form:form>
+    </form>
 
     <a href="<spring:url value='/website/albums/welcome.html'/>" class="home-link">Home</a>
 </div>

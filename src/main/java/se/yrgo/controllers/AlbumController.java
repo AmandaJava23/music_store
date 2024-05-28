@@ -19,12 +19,16 @@ public class AlbumController {
     private AlbumRepository data;
 
     //This method will save the album into the database
+    /*
     @RequestMapping(value="/newAlbum.html",method= RequestMethod.POST)
     public String newAlbum(Album album){
         data.save(album);
         return "redirect:/website/albums/list.html";
 
     }
+
+     */
+
 
     //presenting the initial form to the user
     @RequestMapping(value="/newAlbum.html",method=RequestMethod.GET)
